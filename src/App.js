@@ -38,7 +38,7 @@ function App() {
                     tasks={tasks}
                     setTasks={setTasks}
                     setInputText={setInputText}/>
-                    <TaskList />
+                    <TaskList setTasks={setTasks} tasks={tasks}/>
                     <TaskTabs />
                 </Route>
                 <Route path='/Contacts'>
