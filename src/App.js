@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { Button } from 'antd';
 import Nav from './Nav';
 import Tasks from './Tasks';
 import About from './About';
 import Contacts from './Contacts';
+import TaskList from './TaskList';
+import Task from './Task';
+import TaskTabs from './TaskTabs'
 
 import {
     BrowserRouter as Router,
@@ -13,38 +15,43 @@ import {
     NavLink
   } from "react-router-dom";
 
-class App extends Component {
 
-    state= {
-        tasks: [
-            {task: 'My First Task'}
-        ]
-    }
+function App() { 
 
-    render() {
-        return(
-            <Router>
-                <div className='App'>
-                    <Nav />
-                        
-                    <Switch>
-                    <Route path='/About'>
-                        <About />
-                    </Route>
-                    <Route path='/Tasks'>
-                        <Tasks />
-                    </Route>
-                    <Route path='/Contacts'>
-                        <Contacts />
-                    </Route>
-                </Switch>    
-                </div>
+    const [inputText, setInputText] = useState('');
+    const [tasks, setTasks] = useState([]);
 
-                
-            </Router>
+    
+
+    return(
+        <Router>
+            <div className='App'>
+                <Nav />
+                    
+                <Switch>
+                <Route path='/About'>
+                    <About />
+                </Route>
+                <Route path='/Tasks'>
+                    <Tasks 
+                    inputText={inputText}
+                    tasks={tasks}
+                    setTasks={setTasks}
+                    setInputText={setInputText}/>
+                    <TaskList />
+                    <TaskTabs />
+                </Route>
+                <Route path='/Contacts'>
+                    <Contacts />
+                </Route>
+            </Switch>    
+            </div>
+
             
-        )
-    }
+        </Router>
+        
+    )
+    
 }
 
 export default App;
