@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Button from 'antd';
+import { Button } from 'antd';
 import Nav from './Nav';
 import Tasks from './Tasks';
-import Completed from './Completed';
+import About from './About';
 import Contacts from './Contacts';
 
 import {
@@ -15,6 +15,12 @@ import {
 
 class App extends Component {
 
+    state= {
+        tasks: [
+            {task: 'My First Task'}
+        ]
+    }
+
     render() {
         return(
             <Router>
@@ -22,11 +28,11 @@ class App extends Component {
                     <Nav />
                         
                     <Switch>
+                    <Route path='/About'>
+                        <About />
+                    </Route>
                     <Route path='/Tasks'>
                         <Tasks />
-                    </Route>
-                    <Route path='/Completed'>
-                        <Completed />
                     </Route>
                     <Route path='/Contacts'>
                         <Contacts />
