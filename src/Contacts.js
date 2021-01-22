@@ -1,6 +1,6 @@
 import React from 'react';
 
-const contacts = (props) => {
+const Contacts = (props) => {
     return (
         <div>
             contact list
@@ -8,4 +8,4 @@ const contacts = (props) => {
     )
 }
 
-export default contact;
+export default Contacts;

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const completed = (props) => {
+const Completed = (props) => {
     return (
         <div>
             completed tasks
         </div>
-        )
+    )
 }
 
-export default completed;
+export default Completed;
