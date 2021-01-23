@@ -23,7 +23,12 @@ function App() {
     const [filteredTasks, setFilteredTasks] = useState([]);
     
     useEffect(() => {
+        getLocalTasks();
+    }, []);
+
+    useEffect(() => {
         filterHandler();
+        saveLocalTasks();
     }, [tasks, status]);
 
     const filterHandler = () => {
@@ -34,6 +39,19 @@ function App() {
             break;
             default: setFilteredTasks(tasks);
             break;
+        }
+    }
+
+    const saveLocalTasks = () => {        
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
+
+    const getLocalTasks = () => {
+        if(localStorage.getItem('tasks') === null){
+            localStorage.setItem('tasks', JSON.stringify([]));
+        } else {
+            let localTasks = JSON.parse(localStorage.getItem('tasks'));
+            setTasks(localTasks);
         }
     }
 
