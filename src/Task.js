@@ -19,9 +19,11 @@ const Task = ({ text, task, tasks, setTasks }) => {
 
     return (
         <div className='task border-bottom'>
-            <li className='taskItem'></li> 
-            <input type='checkbox' className='mr-2' onClick={completeHandler}/>{text}
-            <button onClick={deleteHandler} className='trash-btn m-2'>
+            <li className={`task-item ${task.completed ? 'completed' : ''}`}>{text}</li> 
+            <button type='success' className={'btn btn-success'} onClick={completeHandler}>
+                <i className={'fas fa-check'}></i>
+            </button>
+            <button onClick={deleteHandler} type={'button'} className='btn btn-danger m-2'>
                 <i className='fas fa-trash'></i>
             </button>
             

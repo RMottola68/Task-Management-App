@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Nav from './Nav';
 import Tasks from './Tasks';
@@ -6,7 +6,6 @@ import About from './About';
 import Contacts from './Contacts';
 import TaskList from './TaskList';
 import Task from './Task';
-import TaskTabs from './TaskTabs'
 
 import {
     BrowserRouter as Router,
@@ -20,8 +19,23 @@ function App() {
 
     const [inputText, setInputText] = useState('');
     const [tasks, setTasks] = useState([]);
-
+    const [status, setStatus] = useState('all');
+    const [filteredTasks, setFilteredTasks] = useState([]);
     
+    useEffect(() => {
+        filterHandler();
+    }, [tasks, status]);
+
+    const filterHandler = () => {
+        switch(status){
+            case'completed': setFilteredTasks(tasks.filter(task => task.completed === true))
+            break;
+            case 'active': setFilteredTasks(tasks.filter(task => task.completed === false))
+            break;
+            default: setFilteredTasks(tasks);
+            break;
+        }
+    }
 
     return(
         <Router>
@@ -37,9 +51,15 @@ function App() {
                     inputText={inputText}
                     tasks={tasks}
                     setTasks={setTasks}
-                    setInputText={setInputText}/>
-                    <TaskList setTasks={setTasks} tasks={tasks}/>
-                    <TaskTabs />
+                    setInputText={setInputText}
+                    setStatus={setStatus}                    
+                    />
+                    
+                    <TaskList 
+                    setTasks={setTasks} 
+                    tasks={tasks}
+                    filteredTasks={filteredTasks}
+                    />
                 </Route>
                 <Route path='/Contacts'>
                     <Contacts />
