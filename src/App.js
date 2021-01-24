@@ -11,7 +11,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    NavLink
+    NavLink,
+    Redirect
   } from "react-router-dom";
 
 
@@ -21,6 +22,7 @@ function App() {
     const [tasks, setTasks] = useState([]);
     const [status, setStatus] = useState('all');
     const [filteredTasks, setFilteredTasks] = useState([]);
+    const [contact, setContact] = useState([]);
     
     useEffect(() => {
         getLocalTasks();
@@ -57,9 +59,13 @@ function App() {
 
     return(
         <Router>
+            <Route exact path="/">
+                <Redirect to="/About" />
+            </Route>
+                    
             <div className='App'>
                 <Nav />
-                    
+                
                 <Switch>
                 <Route path='/About'>
                     <About />
@@ -80,12 +86,13 @@ function App() {
                     />
                 </Route>
                 <Route path='/Contacts'>
-                    <Contacts />
-                </Route>
-            </Switch>    
-            </div>
+                    <Contacts 
+                    setContact={setContact}
+                    />
+                </Route>              
 
-            
+                </Switch>    
+            </div>          
         </Router>
         
     )
