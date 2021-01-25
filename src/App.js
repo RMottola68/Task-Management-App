@@ -22,7 +22,10 @@ function App() {
     const [tasks, setTasks] = useState([]);
     const [status, setStatus] = useState('all');
     const [filteredTasks, setFilteredTasks] = useState([]);
-    const [contact, setContact] = useState([]);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [contacts, setContacts] = useState([]);
     
     useEffect(() => {
         getLocalTasks();
@@ -87,7 +90,14 @@ function App() {
                 </Route>
                 <Route path='/Contacts'>
                     <Contacts 
-                    setContact={setContact}
+                    firstName={firstName}
+                    lastName={lastName}
+                    email={email}
+                    setLastName={setLastName}
+                    setFirstName={setFirstName}
+                    setEmail={setEmail}
+                    contacts={contacts}
+                    setContacts={setContacts}
                     />
                 </Route>              
 
