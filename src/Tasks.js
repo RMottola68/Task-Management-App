@@ -22,7 +22,7 @@ const Tasks = ({ setInputText, tasks, setTasks, inputText, setStatus }) => {
         <div className='py-3 m-5'>
             <div className={'d-flex justify-content-center'}>
                     <input type="text" placeholder={'Enter Task Here'} className={'p-1 mx-2 w-100'} value={inputText} onChange={inputTaskHandler}></input>
-                    <button onClick={submitTaskHandler}  type={'primary'} className={'taskButton btn btn-primary'}>Add</button>
+                    <button onClick={submitTaskHandler}  type={'primary'} className={'taskButton btn btn-primary mr-2'}>Add</button>
                     <div >
                         <select name='tasks' className={'p-2'} onChange={statusHandler}>
                             <option value="all">All</option>
